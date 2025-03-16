@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body
+    class="w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-5"
+  >
+    <section
+      class="w-full max-w-[1440px] h-fit flex flex-wrap justify-center items-start gap-6 p-6 bg-white rounded-xl shadow-2xl"
+    >
+      <h1 class="w-full text-3xl font-bold text-center text-gray-800">
+        🎓 Student Management System
+      </h1>
+
+      <!-- Show Student Form -->
+      <div
+        class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      >
+        <h2 class="text-xl font-bold text-center text-gray-800">
+          Show All Students
+        </h2>
+        <form action="data.php" method="POST" class="mt-4">
+          <input type="hidden" name="action" value="edit" />
+          <button
+            type="submit"
+            class="w-full py-3 font-bold text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:opacity-80 transition"
+          >
+            Show All Students
+          </button>
+        </form>
+      </div>
+
+      <!-- Add Student Form -->
+      <div
+        class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      >
+        <h2 class="text-xl font-bold text-center text-gray-800">Add Student</h2>
+        <form action="data.php" method="POST" class="mt-4 space-y-4">
+          <input type="hidden" name="action" value="add" />
+          <div>
+            <label class="block text-sm font-medium text-gray-600"
+              >Student ID</label
+            >
+            <input
+              type="text"
+              name="student_id"
+              class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              placeholder="1"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 font-bold text-white bg-gradient-to-r from-green-400 to-green-600 rounded-lg hover:opacity-80 transition"
+          >
+            Add Student
+          </button>
+        </form>
+      </div>
+
+      <!-- Edit Student Form -->
+      <div
+        class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      >
+        <h2 class="text-xl font-bold text-center text-gray-800">
+          Edit Student
+        </h2>
+        <form action="data.php" method="POST" class="mt-4 space-y-4">
+          <input type="hidden" name="action" value="edit" />
+          <div>
+            <label class="block text-sm font-medium text-gray-600"
+              >Student ID</label
+            >
+            <input
+              type="text"
+              name="student_id"
+              class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-blue-300"
+              placeholder="1"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 font-bold text-white bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg hover:opacity-80 transition"
+          >
+            Edit Student
+          </button>
+        </form>
+      </div>
+
+      <!-- Delete Student Form -->
+      <div
+        class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      >
+        <h2 class="text-xl font-bold text-center text-gray-800">
+          Delete Student
+        </h2>
+        <form action="data.php" method="POST" class="mt-4 space-y-4">
+          <input type="hidden" name="action" value="delete" />
+          <div>
+            <label class="block text-sm font-medium text-gray-600"
+              >Student ID</label
+            >
+            <input
+              type="text"
+              name="student_id"
+              class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-red-300"
+              placeholder="1"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 font-bold text-white bg-gradient-to-r from-red-500 to-red-700 rounded-lg hover:opacity-80 transition"
+          >
+            Delete Student
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      window.onload = function () {
+        fetch("data.php")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          });
+      };
+    </script>
+  </body>
+</html>
